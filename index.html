@@ -12,13 +12,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -36,10 +35,59 @@
             bottom: 0;
         }
 
-        h1, h2 {
+        /* Tab Styling */
+        nav {
             margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #4CAF50;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #3e8e41;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Text Styling */
+        .smooth-text {
+            text-align: center;
+            font-size: 2em;
+            font-family: "Times New Roman", Times, serif;
+            margin-top: 20vh; /* Zentriert den Text vertikal */
         }
     </style>
+    <script>
+        // JavaScript zum Umschalten zwischen den Reitern
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </head>
 
 <body>
@@ -47,21 +95,50 @@
         <h1>Willkommen auf meiner persönlichen Website!</h1>
     </header>
 
-    <main>
-        <h2>Über mich</h2>
-        <p>Hallo! Mein Name ist Max Mustermann und ich bin Informatiker. Ich interessiere mich für die Entwicklung von Software, Webtechnologien und künstliche Intelligenz.</p>
+    <nav>
+        <a href="#" class="tab-link active" onclick="openTab(event, 'home')">Start</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'about')">Über mich</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'projects')">Projekte</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'contact')">Kontakt</a>
+    </nav>
 
-        <h2>Projekte</h2>
-        <p>Ich habe an verschiedenen Projekten gearbeitet, darunter:</p>
-        <ul>
-            <li>X</li>
-            <li>Y</li>
-            <li>Z</li>
-        </ul>
+    <main>
+        <!-- Startreiter -->
+        <div id="home" class="tab-content active">
+            <p class="smooth-text">Texttest</p>
+        </div>
+
+        <!-- Über mich -->
+        <div id="about" class="tab-content">
+            <h2>Über mich</h2>
+            <p>Hallo! Mein Name ist Max Mustermann und ich bin Informatiker. Ich interessiere mich für die Entwicklung von Software, Webtechnologien und künstliche Intelligenz.</p>
+        </div>
+
+        <!-- Projekte -->
+        <div id="projects" class="tab-content">
+            <h2>Projekte</h2>
+            <p>Ich habe an verschiedenen Projekten gearbeitet, darunter:</p>
+            <ul>
+                <li>Webanwendungen</li>
+                <li>Mobile Apps</li>
+                <li>Machine Learning</li>
+            </ul>
+        </div>
+
+        <!-- Kontakt -->
+        <div id="contact" class="tab-content">
+            <h2>Kontakt</h2>
+            <p>Kontaktieren Sie mich unter:</p>
+            <ul>
+                <li><a href="mailto:max.mustermann@example.com">E-Mail</a></li>
+                <li><a href="https://www.linkedin.com/in/max-mustermann" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/maxmustermann" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
     </main>
 
     <footer>
-        <p>Kontakt: <a href="mailto:max.mustermann@example.com">max.mustermann@example.com</a></p>
+        <p>&copy; 2024 Max Mustermann</p>
     </footer>
 </body>
 
