@@ -21,24 +21,7 @@
             text-align: center;
         }
 
-        main {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #f1f1f1;
-            color: #333;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Tab Styling */
         nav {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             background-color: #4CAF50;
@@ -56,12 +39,30 @@
             background-color: #3e8e41;
         }
 
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            color: #333;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Tab Styling und Animationen */
         .tab-content {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1;
         }
 
         /* Text Styling */
@@ -78,13 +79,13 @@
             var i, tabContent, tabLinks;
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].style.display = "none";
+                tabContent[i].classList.remove("active");
             }
             tabLinks = document.getElementsByClassName("tab-link");
             for (i = 0; i < tabLinks.length; i++) {
                 tabLinks[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
     </script>
@@ -136,10 +137,6 @@
             </ul>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Max Mustermann</p>
-    </footer>
 </body>
 
 </html>
